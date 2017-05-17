@@ -1,0 +1,12 @@
+{
+  "name": "aisle6",
+  "version": "1.0.0",
+  "description": "Firebase Realtime Database Codelab",
+  "main": "index.js",
+  "author": "evan.halley@gmail.com",
+  "license": "Apache License Version 2.0",
+  "dependencies": {
+    "firebase-admin": "^4.0.3",
+    "promise": "^7.1.1"
+  }
+}
