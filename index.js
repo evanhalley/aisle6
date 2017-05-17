@@ -1,17 +1,11 @@
-// import firebase package
-var firebase = require('firebase-admin');
+// TODO import firebase package
 
 // read the service account key
 var serviceAccount = require('./service_account_key.json');
 
-// configure firebase
-firebase.initializeApp({
-	credential: firebase.credential.cert(serviceAccount),
-	databaseURL: 'https://aisle6-a38f6.firebaseio.com'
-});
+// TODO configure firebase
 
-// get a reference to the firebase database and the grocery object
-var database = firebase.database();
+// TODO get a reference to the firebase database and the grocery object
 
 // get the objects from grocery 
 var foodgledPromise = foodgledGroceries();
@@ -43,26 +37,15 @@ Promise.all([foodgledPromise, firebasePromise]).then(values => {
 
 function updateGroceries(toUpdate) {
 	console.log("Updating groceries " + Object.keys(toUpdate).length);
-	var ref = database.ref("grocery");
 	var promises = [];
-
-	Object.keys(toUpdate).forEach(function(id) {
-		var item = toUpdate[id];
-		console.log("Updating item sku " + item.sku);
-		promises.push(ref.child(id).set(item))
-	});
+	// TODO iterate over the toUpdate object and push updates to firebase
 	return Promise.all(promises);
 }
 
 function addGroceries(toAdd) {
 	console.log("Adding new groceries " + toAdd.length);
-	var ref = database.ref("grocery");
 	var promises = [];
-
-	toAdd.forEach(function(item) {
-		console.log("Adding item with sku " + item.sku);
-		promises.push(ref.push(item));
-	});
+	// iterate over the toAdd groceries array and push new groceries to firebase
 	return Promise.all(promises);
 }
 
@@ -111,8 +94,7 @@ function processGroceries(foodgled, stored) {
  * Gets a reference to the firebase database, then returns a Promise to get all groceries
  */
 function firebaseGroceries() {
-	var ref = database.ref("grocery");
-	return ref.once("value");
+	// TODO retrieve groceries from fire base
 }
 
 /**
